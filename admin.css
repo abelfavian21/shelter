@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 1em;
+    background: #f0f5e5;
+  }
+  
+  header {
+    text-align: center;
+    background: #4a752c;
+    color: white;
+    padding: 1em;
+    border-radius: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2em;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px;
+    background: #4a752c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #3a5e23;
+  }
+  
+  .animal-item {
+    background: white;
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #4a752c;
+  }
+  
+  .actions {
+    margin-top: 10px;
+  }
+  

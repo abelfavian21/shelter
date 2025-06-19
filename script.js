@@ -12,17 +12,22 @@ function loadAnimalsByCategory(category) {
           const animal = data[key];
   
           const card = document.createElement("div");
-          card.className = "animal-card" + (index % 2 === 0 ? "" : " dark");
-          card.innerHTML = `
-            <img src="${animal.image}" alt="${animal.name}" />
-            <div class="animal-info">
-              <h3>${animal.name}</h3>
-              <p>${animal.gender}</p>
-              <p>${animal.age}</p>
-              <p>📍 ${animal.alamat}</p>
-            </div>
-          `;
-          container.appendChild(card);
+card.className = "animal-card" + (index % 2 === 0 ? "" : " dark");
+card.innerHTML = `
+  <img src="${animal.image}" alt="${animal.name}" />
+  <div class="animal-info">
+    <h3>${animal.name}</h3>
+    <p>${animal.gender}</p>
+    <p>${animal.age}</p>
+    <p>📍 ${animal.alamat}</p>
+  </div>
+`;
+card.addEventListener("click", () => {
+  localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+  window.location.href = "detail.html";
+});
+container.appendChild(card);
+
         });
   
         // Jalankan filter jika sedang ada input pencarian

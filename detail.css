@@ -1,0 +1,149 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f5e5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .detail-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .detail-container img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .top-info {
+    background: #4a752c;
+    color: white;
+    border-radius: 20px;
+    padding: 1em;
+    margin-top: -20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .top-info h2 {
+    margin: 0;
+  }
+  
+  .labels {
+    display: flex;
+    gap: 10px;
+    margin: 1em 0;
+  }
+  
+  .labels div {
+    background: #eee;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    color: #333;
+  }
+  
+  .desc {
+    margin-top: 1em;
+    font-size: 0.95em;
+  }
+  
+  .adopt-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 24px;
+    border: none;
+    background-color: #4a752c;
+    color: white;
+    font-size: 1em;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: white;
+  }
+  
+  header {
+    position: relative;
+    text-align: center;
+    padding: 1.5em;
+    background: #4a752c;
+    color: white;
+  }
+  
+  .dark-toggle {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* === DARK MODE === */
+  body.dark {
+    background: #121212;
+    color: #eee;
+  }
+  
+  body.dark header {
+    background: #2d2d2d;
+  }
+  
+  body.dark .top-info {
+    background: #2d2d2d;
+    color: #fff;
+  }
+  
+  body.dark .labels div {
+    background: #333;
+    color: #eee;
+  }
+  
+  body.dark .desc {
+    color: #ccc;
+  }
+  
+  body.dark .adopt-btn {
+    background: #68b46e;
+    color: black;
+  }
+  .adopt-btn {
+    display: block;
+    margin: 24px auto 0;
+    padding: 12px 24px;
+    background-color: #25D366; /* Warna khas WhatsApp */
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .adopt-btn:hover {
+    background-color: #1ebe5d;
+    transform: scale(1.03);
+  }
+  
+  body.dark .adopt-btn {
+    background-color: #128C7E;
+    color: #fff;
+  }
+  

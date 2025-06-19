@@ -93,6 +93,7 @@ function loadAnimalsByCategory(category) {
       } else {
         card.style.display = "none";
       }
+      
     });
   }
   
@@ -137,6 +138,7 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 // Toggle saat tombol diklik
+
 toggleButton.addEventListener("click", () => {
   body.classList.toggle("dark");
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Hewan</title>
+  <link rel="stylesheet" href="detail.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<header>
+    <button id="backButton" class="back-button">←</button>
+    <h1>Detail</h1>
+    <button id="darkModeToggle" class="dark-toggle">🌙</button>
+  </header>
+  
+<body>
+  <div class="detail-container">
+    <img id="animalImage" src="" alt="Animal">
+    <div class="top-info">
+      <h2 id="animalName">Nama</h2>
+      <p id="animalLocation">📍 Lokasi</p>
+    </div>
+
+    <div class="labels">
+      <div>
+        <strong>Kelamin</strong>
+        <p id="animalGender"></p>
+      </div>
+      <div>
+        <strong>Umur</strong>
+        <p id="animalAge"></p>
+      </div>
+      <div>
+        <strong>Berat</strong>
+        <p id="animalWeight"></p>
+      </div>
+    </div>
+
+    <div class="desc" id="animalDescription"></div>
+
+   <a class="adopt-btn" id="waAdoptBtn" target="_blank">Adopsi via WhatsApp</a>
+
+  </div>
+
+  <script src="detail.js"></script>
+</body>
+</html>

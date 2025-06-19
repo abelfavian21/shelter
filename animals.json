@@ -1,0 +1,47 @@
+{
+  "animals": {
+    "kucing": {
+      "k1": {
+        "name": "Garfield",
+        "gender": "Jantan",
+        "age": "usia 3 bulan",
+        "alamat": "Solo, Jawa Tengah",
+        "image": "https://www.pngarts.com/files/3/Cute-Cat-Transparent-Image.png"
+      },
+      "k2": {
+        "name": "Garfield",
+        "gender": "Jantan",
+        "age": "usia 3 bulan",
+        "alamat": "Solo, Jawa Tengah",
+        "image": "https://link-garfield.jpg"
+      }
+    },
+    "anjing": {
+      "a1": {
+        "name": "Bruno",
+        "gender": "Jantan",
+        "age": "usia 2 tahun",
+        "alamat": "Jogja, DIY",
+        "image": "https://example.com/dog.jpg"
+      }
+    },
+    "burung": {
+      "b1": {
+        "name": "Tweety",
+        "gender": "Betina",
+        "age": "usia 1 tahun",
+        "alamat": "Semarang, Jawa Tengah",
+        "image": "https://example.com/bird.jpg"
+      }
+    },
+    "kelinci": {
+      "kl1": {
+        "name": "Bunny",
+        "gender": "Betina",
+        "age": "usia 6 bulan",
+        "alamat": "Bandung, Jawa Barat",
+        "image": "https://example.com/rabbit.jpg"
+      }
+    }
+  }
+}

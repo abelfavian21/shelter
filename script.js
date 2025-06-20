@@ -68,6 +68,11 @@ container.appendChild(card);
                 <p>📍 ${animal.alamat}</p>
               </div>
             `;
+            // ✅ Tambahkan click event untuk redirect ke detail.html
+          card.addEventListener("click", () => {
+            localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+            window.location.href = "detail.html";
+          });
             container.appendChild(card);
             index++;
           });

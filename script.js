@@ -1,4 +1,7 @@
-// Fungsi untuk menampilkan hewan berdasarkan kategori
+// === Firebase config di file terpisah (firebase-config.js) ===
+// pastikan firebase sudah diinisialisasi sebelum file ini
+
+// === Load berdasarkan kategori ===
 function loadAnimalsByCategory(category) {
     const container = document.getElementById("animals-container");
     const ref = database.ref("animals/" + category);
@@ -12,35 +15,34 @@ function loadAnimalsByCategory(category) {
           const animal = data[key];
   
           const card = document.createElement("div");
-card.className = "animal-card" + (index % 2 === 0 ? "" : " dark");
-card.innerHTML = `
-  <img src="${animal.image}" alt="${animal.name}" />
-  <div class="animal-info">
-    <h3>${animal.name}</h3>
-    <p>${animal.gender}</p>
-    <p>${animal.age}</p>
-    <p>📍 ${animal.alamat}</p>
-  </div>
-`;
-card.addEventListener("click", () => {
-  localStorage.setItem("selectedAnimal", JSON.stringify(animal));
-  window.location.href = "detail.html";
-});
-container.appendChild(card);
-
+          card.className = "animal-card" + (index % 2 === 0 ? "" : " dark");
+          card.innerHTML = `
+            <img src="${animal.image}" alt="${animal.name}" />
+            <div class="animal-info">
+              <h3>${animal.name}</h3>
+              <p>${animal.gender}</p>
+              <p>${animal.age}</p>
+              <p>📍 ${animal.alamat}</p>
+            </div>
+          `;
+  
+          card.addEventListener("click", () => {
+            localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+            window.location.href = "detail.html";
+          });
+  
+          container.appendChild(card);
         });
   
-        // Jalankan filter jika sedang ada input pencarian
         const keyword = document.getElementById("searchInput").value.toLowerCase();
         if (keyword) filterCards(keyword);
-  
       } else {
         container.innerHTML = "<p>Tidak ada data hewan di kategori ini.</p>";
       }
     });
   }
   
-  // Fungsi untuk menampilkan semua hewan dari semua kategori
+  // === Load semua kategori ===
   function loadAllAnimals() {
     const container = document.getElementById("animals-container");
     const allRef = database.ref("animals");
@@ -68,11 +70,12 @@ container.appendChild(card);
                 <p>📍 ${animal.alamat}</p>
               </div>
             `;
-            // ✅ Tambahkan click event untuk redirect ke detail.html
-          card.addEventListener("click", () => {
-            localStorage.setItem("selectedAnimal", JSON.stringify(animal));
-            window.location.href = "detail.html";
-          });
+  
+            card.addEventListener("click", () => {
+              localStorage.setItem("selectedAnimal", JSON.stringify(animal));
+              window.location.href = "detail.html";
+            });
+  
             container.appendChild(card);
             index++;
           });
@@ -80,14 +83,13 @@ container.appendChild(card);
   
         const keyword = document.getElementById("searchInput").value.toLowerCase();
         if (keyword) filterCards(keyword);
-  
       } else {
         container.innerHTML = "<p>Tidak ada data hewan ditemukan.</p>";
       }
     });
   }
   
-  // Fungsi pencarian (berbasis nama, gender, umur, lokasi)
+  // === Filter kartu berdasarkan keyword ===
   function filterCards(keyword) {
     const cards = document.querySelectorAll(".animal-card");
     cards.forEach(card => {
@@ -103,19 +105,18 @@ container.appendChild(card);
       } else {
         card.style.display = "none";
       }
-      
     });
   }
   
-  // DOM Ready
+  // === Saat DOM siap ===
   document.addEventListener("DOMContentLoaded", () => {
-    // Default tampilkan kategori kucing
+    // Default kategori: kucing
     loadAnimalsByCategory("kucing");
   
     const buttons = document.querySelectorAll("#category-buttons button");
     const searchInput = document.getElementById("searchInput");
   
-    // Event: Klik kategori
+    // Event: klik tombol kategori
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const kategori = button.textContent.toLowerCase();
@@ -126,37 +127,52 @@ container.appendChild(card);
           loadAnimalsByCategory(kategori);
         }
   
-        // Gaya aktif tombol
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
       });
     });
   
-    // Event: Input pencarian
-    searchInput.addEventListener("input", function () {
+    // Event: input pencarian
+    searchInput.addEventListener("input", () => {
       const keyword = searchInput.value.toLowerCase();
       filterCards(keyword);
     });
+  
+    // === Dark Mode ===
+    const toggleButton = document.getElementById("darkModeToggle");
+    const body = document.body;
+  
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      toggleButton.textContent = "☀️";
+    }
+  
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const theme = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+      toggleButton.textContent = theme === "dark" ? "☀️" : "🌙";
+    });
+  
+    // === Hamburger Menu ===
+    const hamburger = document.getElementById("hamburger");
+    const sideMenu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("menuOverlay");
+    const closeBtn = document.getElementById("closeMenu");
+  
+    hamburger.addEventListener("click", () => {
+      sideMenu.classList.add("open");
+      overlay.classList.add("show");
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
   });
-  const toggleButton = document.getElementById("darkModeToggle");
-const body = document.body;
-
-// Cek preferensi awal dari localStorage
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark");
-  toggleButton.textContent = "☀️";
-}
-
-// Toggle saat tombol diklik
-
-toggleButton.addEventListener("click", () => {
-  body.classList.toggle("dark");
-
-  if (body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    toggleButton.textContent = "☀️";
-  } else {
-    localStorage.setItem("theme", "light");
-    toggleButton.textContent = "🌙";
-  }
-});
+  
